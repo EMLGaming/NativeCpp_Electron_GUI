@@ -1,0 +1,22 @@
+{
+  "name": "NativeCpp_Electron_GUI",
+  "version": "1.0.0",
+  "description": "I do not recommend using this code yet I am just trying to get native c++ running on my GUI using electron.",
+  "main": "bindings.js",
+  "scripts": {
+    "build": "node-gyp build",
+    "install": "node-gyp rebuild",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EMLGaming/NativeCpp_Electron_GUI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EMLGaming/NativeCpp_Electron_GUI/issues"
+  },
+  "homepage": "https://github.com/EMLGaming/NativeCpp_Electron_GUI#readme"
+}
