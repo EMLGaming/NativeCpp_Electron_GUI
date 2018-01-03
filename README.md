@@ -1,7 +1,6 @@
 # NativeCpp_Electron_GUI
 
-NOTE IT DOESN'T WORK YET!!!
-
+**I AM CURRENTLY WORKING ON IT AND THIS IS NOT YET FINISHED**
 
 I do not recommend using this code yet I am just trying to get native c++ running on my GUI using electron.
 

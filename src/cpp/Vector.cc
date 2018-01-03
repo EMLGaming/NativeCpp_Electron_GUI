@@ -3,21 +3,21 @@
 Nan::Persistent<v8::FunctionTemplate> Vector::constructor;
 
 NAN_MODULE_INIT(Vector::Init) {
-  v8::Local<v8::FunctionTemplate> ctor = 
+  v8::Local<v8::FunctionTemplate> ctor =
 Nan::New<v8::FunctionTemplate>(Vector::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("Vector").ToLocalChecked());
 
   // link our getters and setter to the object property
-  Nan::SetAccessor(ctor->InstanceTemplate(), 
-Nan::New("x").ToLocalChecked(), Vector::HandleGetters, 
+  Nan::SetAccessor(ctor->InstanceTemplate(),
+Nan::New("x").ToLocalChecked(), Vector::HandleGetters,
 Vector::HandleSetters);
-  Nan::SetAccessor(ctor->InstanceTemplate(), 
-Nan::New("y").ToLocalChecked(), Vector::HandleGetters, 
+  Nan::SetAccessor(ctor->InstanceTemplate(),
+Nan::New("y").ToLocalChecked(), Vector::HandleGetters,
 Vector::HandleSetters);
-  Nan::SetAccessor(ctor->InstanceTemplate(), 
-Nan::New("z").ToLocalChecked(), Vector::HandleGetters, 
+  Nan::SetAccessor(ctor->InstanceTemplate(),
+Nan::New("z").ToLocalChecked(), Vector::HandleGetters,
 Vector::HandleSetters);
 
   Nan::SetPrototypeMethod(ctor, "add", Add);
@@ -28,21 +28,18 @@ Vector::HandleSetters);
 NAN_METHOD(Vector::New) {
   // throw an error if constructor is called without new keyword
   if(!info.IsConstructCall()) {
-    return Nan::ThrowError(Nan::New("Vector::New - called without new 
-keyword").ToLocalChecked());
+    return Nan::ThrowError(Nan::New("Vector::New - called without new keyword").ToLocalChecked());
   }
 
   // expect exactly 3 arguments
   if(info.Length() != 3) {
-    return Nan::ThrowError(Nan::New("Vector::New - expected arguments x, 
-y, z").ToLocalChecked());
+    return Nan::ThrowError(Nan::New("Vector::New - expected arguments x, y, z").ToLocalChecked());
   }
 
   // expect arguments to be numbers
-  if(!info[0]->IsNumber() || !info[1]->IsNumber() || 
+  if(!info[0]->IsNumber() || !info[1]->IsNumber() ||
 !info[2]->IsNumber()) {
-    return Nan::ThrowError(Nan::New("Vector::New - expected arguments to 
-be numbers").ToLocalChecked());
+    return Nan::ThrowError(Nan::New("Vector::New - expected arguments to be numbers").ToLocalChecked());
   }
 
   // create a new instance and wrap our javascript instance
@@ -63,11 +60,10 @@ NAN_METHOD(Vector::Add) {
   Vector * self = Nan::ObjectWrap::Unwrap<Vector>(info.This());
 
   if (!Nan::New(Vector::constructor)->HasInstance(info[0])) {
-    return Nan::ThrowError(Nan::New("Vector::Add - expected argument to 
-be instance of Vector").ToLocalChecked());
+    return Nan::ThrowError(Nan::New("Vector::Add - expected argument to be instance of Vector").ToLocalChecked());
   }
   // unwrap the Vector passed as argument
-  Vector * otherVec = 
+  Vector * otherVec =
 Nan::ObjectWrap::Unwrap<Vector>(info[0]->ToObject());
 
   // specify argument counts and constructor arguments
@@ -79,10 +75,10 @@ Nan::ObjectWrap::Unwrap<Vector>(info[0]->ToObject());
   };
 
   // get a local handle to our constructor function
-  v8::Local<v8::Function> constructorFunc = 
+  v8::Local<v8::Function> constructorFunc =
 Nan::New(Vector::constructor)->GetFunction();
   // create a new JS instance from arguments
-  v8::Local<v8::Object> jsSumVec = Nan::NewInstance(constructorFunc, 
+  v8::Local<v8::Object> jsSumVec = Nan::NewInstance(constructorFunc,
 argc, argv).ToLocalChecked();
 
   info.GetReturnValue().Set(jsSumVec);
@@ -107,8 +103,7 @@ NAN_SETTER(Vector::HandleSetters) {
   Vector* self = Nan::ObjectWrap::Unwrap<Vector>(info.This());
 
   if(!value->IsNumber()) {
-    return Nan::ThrowError(Nan::New("expected value to be a 
-number").ToLocalChecked());
+    return Nan::ThrowError(Nan::New("expected value to be a number").ToLocalChecked());
   }
 
   std::string propertyName = std::string(*Nan::Utf8String(property));

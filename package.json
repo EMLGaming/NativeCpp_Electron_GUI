@@ -8,6 +8,9 @@
     "install": "node-gyp rebuild",
     "start": "node ./index.js"
   },
+  "dependencies": {
+    "nan": "^2.7.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EMLGaming/NativeCpp_Electron_GUI.git"

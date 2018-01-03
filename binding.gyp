@@ -2,12 +2,12 @@
   "targets": [{
     "target_name": "myModule",
     "include_dirs" : [
-      "src",
+      "src/cpp",
       "<!(node -e \"require('nan')\")"
     ],
     "sources": [
-      "src/index.cc",
-      "src/Vector.cc"
+      "src/cpp/index.cc",
+      "src/cpp/Vector.cc"
     ]
   }]
 }
