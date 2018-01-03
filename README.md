@@ -22,14 +22,21 @@ npm init -y		//node package manager initialize and skip output
 sudo npm install -g electron node-gyp --unsafe-perm=true --allow-root --save-dev --save-exact
 
 change line
+```
 	"main": "index.js",
+```
 to
+```
 	"main": "bindings.js"
+```
 this is for the bindings
-
+```
 	"test": "echo \"Error: no test specified\" && exit 1"
+```
 to
+```
 	"start": "electron ."
+```
 this will launch the application when we type npm start
 
 now we need main.js for electron to actually start
