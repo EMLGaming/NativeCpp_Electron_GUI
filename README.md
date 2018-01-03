@@ -4,6 +4,17 @@
 
 I do not recommend using this code yet I am just trying to get native c++ running on my GUI using electron.
 
+
+how to run:
+git clone https://github.com/EMLGaming/NativeCpp_Electron_GUI.git
+cd NativeCpp_Electron_GUI
+npm install
+npm start
+
+
+
+
+
 check version
 
 npm -v
