@@ -2,6 +2,8 @@
 
 **I AM CURRENTLY WORKING ON IT AND THIS IS NOT YET FINISHED**
 
+**I would not recommend doing this and I have quit there is no point in not just using QT**
+
 I do not recommend using this code yet I am just trying to get native c++ running on my GUI using electron.
 
 
